@@ -11,73 +11,92 @@
 <!-- END PAUL EVANS MAIN LOGO -->
 
 <!-- HEADER -->
+
     <tr>
       <td id="header" align="center"  >
         <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="header_title padding-copy" align="center">
-                <p style="width:484px">Did you know you can buy these shoes for $33.25 per month?*</p>
+              <td class="padding-copy" align="center">
+                <p style="margin-top:48px;margin-bottom:24px;width:484px;font-size:32px;color: #ffffff;">Did you know you can buy these shoes for $33.25 per month?*</p>
               </td>
             </tr>
             <tr>
-              <td class="header_text padding-copy" align="center" >
-                <p style="margin-bottom:7px;width:436px">Simply select Affirm at checkout to buy these new shoes now, and pay for them in monthly installments</p>
+              <td class="padding-copy" align="center"  >
+                <p style="margin-top:0px;margin-bottom:48px;width:436px;color: #ffffff;">Simply select Affirm at checkout to buy these new shoes now, and pay for them in monthly installments</p>
               </td>
             </tr>
         </table>
       </td>
     </tr>
 
-    <!-- ORDER SUMMARY -->
+    <!-- ITEM LIST -->
     <tr>
-      <td id="shipping&billing" align="center">
+      <td id="item_list" align="center">
         <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
           <tr>
             <td>
               <table width="484px" align="center" style="margin-top:9px; " >
-                  {{ custom_message }}
-                  {% for line in line_items %}
-                  <tr>
-                    <td style="border-bottom:1px solid #C0C0C0;padding-bottom:12px">
+                {{ custom_message }}
+                {% for line in line_items %}
+                <tr>
+                  <td style="border-bottom:1px solid #C0C0C0;padding-bottom:12px">
 
-                    <!-- left COLUMN -->
-                     <table cellpadding="0" cellspacing="0" border="0" width="30%" align="left">
-                        <tr>
-                          <td style="padding: 0 0 0px 0;">
-                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                              <tr>
-                                <td valign="top"><div class="item_image" style="display: inline-block;margin-right:17px;">{{ line |  img_url: 'medium' | img_tag }}</div></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
+                  <!-- left COLUMN -->
+                   <table cellpadding="0" cellspacing="0" border="0" width="30%" align="left">
+                      <tr>
+                        <td style="padding: 0 0 0px 0;">
+                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td valign="top"><div class="item_image" style="display: inline-block;margin-right:17px;">{{ line |  img_url: 'medium' | img_tag }}</div></td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
 
 
-                      <!-- RIGHT COLUMN -->
-                      <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right">
-                        <tr>
-                          <td>
-                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                              <tr>
-                                <td valign="center">
-                                  <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
-                                  <p style="color:#4A4A4A;margin:0px;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                 {% endfor %}
-               </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
+                    <!-- RIGHT COLUMN -->
+                    <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right">
+                      <tr>
+                        <td>
+                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                            <tr>
+                              <td valign="center">
+                                <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
+                                <p style="color:#4A4A4A;margin:0px;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+               {% endfor %}
+             </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- INFO -->
+    <tr>
+      <td id="shipping&billing" align="center">
+        <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
+          <tr>
+            <td style="padding-top:48px">
+              <table width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;" >
+                <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
+                  <td class="footer_button" bgcolor="#4a4a4a">
+                    <a class="footer_button_text" href="http://www.paulevansny.com/cart" target="_blank">View my cart</a></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
 <!-- FOOTER -->
   <tr>
@@ -176,19 +195,6 @@
 <style type="text/css">
 
 /* --------------------------------- HEADER --------------------------------- */
-.header_title {
-  font-size: 32px;
-  color: #ffffff;
-  font-weight: 400;
-  padding-top: 48px;
-}
-
-.header_text {
-  font-size: 16px;
-  color: #ffffff;
-  padding: 24px 0 46px;
-  width:436px;
-}
 
 .header_button {
   font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -206,8 +212,6 @@
   line-height: 17px;
   width:217px;
 }
-
-/* SELECT THIS SIZE: */
 
 
 
@@ -256,13 +260,6 @@
   text-transform: uppercase;
   font-weight: 700;
 }
-
-
-
-
-
-
-
 
 
   @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
