@@ -1,0 +1,44 @@
+<div style="font-family: sans-serif;width:600px;margin:0 auto;">
+
+  <div style="justify-content: space-between;">
+    <img src="{{ 'logo.png' | asset_url }}" alt="Paul Evans">
+    <div style="float:right;">
+      <p><a style="text-decoration: none; color: #464646;padding:0 5px;" href="http://www.paulevansny.com/">HOME</a>   <a style="text-decoration: none; color: #464646;padding:0 5px;" href="http://www.paulevansny.com/collections/shoes">SHOES</a>   <a style="text-decoration: none; color: #464646;padding:0 5px;" href="http://www.paulevansny.com/collections/belts">BELTS</a>   <a style="text-decoration: none; color: #464646;padding:0 5px;" href="http://www.paulevansny.com/collections/bags">BAGS</a></p>
+    </div>
+  </div>
+  <h1 style="text-align: center; font-family: serif;font-weight:100;">Did you know you can buy these shoes for {% for line in line_items | limit: 1 %}{{ line.price | divided_by: 12 | money }}{% endfor %} per month?<sup style="color: red;">*</sup></h1>
+  <p style="text-align: center;">Simply select Affirm at checkout to buy these new shoes now, and pay for them over time in monthly installments.</p>
+  <hr>
+
+{{ custom_message }}
+{% for line in line_items | limit: 1 %}
+  <div style="display: flex; justify-content: space-around;">
+    <div style="width:49%">
+      {{ line |  img_url: 'medium' | img_tag }}
+    </div>
+    <div style="width:49%">
+      <h2 style="text-transform: uppercase;font-weight:400;">{{ line.title }}</h2>
+      <h2>{{ line.price | money }}</h2>
+      <p style="line-height:0;">or as low as <span style="font-size: 1.65rem;">{{ line.price | divided_by: 12 | money }}</span> /month<sup style="color: red;">*</sup></p>
+    </div>
+  </div>
+{% endfor %}
+  <hr>
+  <div style="text-align: center; margin: 2rem 0;">
+    <a href="http://www.paulevansny.com/cart" style="text-transform: uppercase; border: 2px solid black; padding: 14px 20px; color: black; text-decoration: none;">View my cart</a>
+  </div>
+  <div style="background-color: #eeeeee; padding: 1rem; margin-top: 3rem;">
+    <h2 style="text-align: center;">Affirm for Paul Evans is simple</h2>
+    <ol>
+      <li>Place the items you want in your cart</li>
+      <li>Select to pay with <span style="color:#e0c78e;">Affirm</span> when checking out</li>
+      <li>Choose the plan that best matches your monthly budget, and confirm your purchase</li>
+    </ol>
+  </div>
+  <div style="background-color: black; padding: 33px; text-align: center;">
+    <a href="https://www.facebook.com/paulevansnyc"><img style="width: 7%;" src="{{ 'facebook.png' | asset_url }}"></a>
+    <a href="#"><img style="width: 7%;" src="{{ 'twitter.png' | asset_url }}"></a>
+    <a href="http://www.instagram.com/paulevansny"><img style="width: 7%;" src="{{ 'instagram.png' | asset_url }}"></a>
+  </div>
+  <p style="color: #9a9a9a;"><sup style="color: red;">*</sup> Monthly payment based on the advertised purchase price at 0% APR for 12 months. Rates from 0-30% APR. Eligibility and rates for Affirm financing are based on applicant’s credit worthiness. Affirm loans made by Cross River Bank, member FDIC. Learn more at affirm.com/buy-with-affirm.</p>
+</div>
