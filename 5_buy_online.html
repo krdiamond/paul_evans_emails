@@ -226,12 +226,18 @@
                 </tr>
                 {% if shipping_method %}
                 <tr>
-                    <td style="border-top: 1px solid #C0C0C0;padding:15px 0">
-                      <p align="left" style="color:#4A4A4A;margin-top:0px;margin-bottom:7px;font-weight:700; text-transform: uppercase;">Shipping method</p>
-                      <p align="left" style="color:#4A4A4A;margin-top:0px;margin-bottom:0px;">{{ shipping_method.title }}: {{ shipping_method.price | money }}</p>
+                    <td>
+                      <p align="left" style="color:#4A4A4A;margin-top:0px;margin-bottom:7px;font-weight:700">Shipping method</p>
+                      <p align="left" style="color:#4A4A4A;margin-top:0px;margin-bottom:0px;">{{ shipping_method.title }}</p>
+                      <p align="left" style="color:#4A4A4A;margin-top:0px;margin-bottom:0px;"> {{ shipping_method.price | money }}</p>
                     </td>
                 </tr>
                 {% endif %}
+                </tr>
+              </table>
+              <table width="484px" align="center" style="margin-top:35px;margin-bottom:48px" >
+                <tr>
+                  <td> Come back or visit <a href="https://www.paulevansny.com/">our online store</a></td>
                 </tr>
               </table>
             </td>
