@@ -100,10 +100,10 @@
     <!-- Order Totals -->
     <tr>
       <td id="order_summary" align="center">
-        <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
+        <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td>
-              <table width="484px" align="center" style="margin-top:24px;margin-bottom:48px;border-bottom: 1px solid #C0C0C0;" >
+              <table width="484px" align="center" style="margin-top:24px;margin-bottom:24px" >
                 {% if discounts %}
                   <tr>
                     <td style="padding: 0 0 7px" valign="top" align="left">Discount (code: {{ discounts.first.code }}) : {{ discounts_savings | money }}</td>
@@ -136,7 +136,7 @@
                     {% endfor %}
 
                     {% if transaction_size > 1 or transaction_amount < total_price %}
-                      <table class="row subtotal-table">
+                      <table class="row subtotal-table" width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;border-top: 1px solid #C0C0C0;">
                         <tr><td colspan="2" class="subtotal-table__line"></td></tr>
                         <tr><td colspan="2" class="subtotal-table__small-space"></td></tr>
 
@@ -149,42 +149,42 @@
                         {% endif %}
 
 
-                  <tr class="subtotal-line">
-                    <td class="subtotal-line__title">
-                      <p>{{transaction_name}}</p>
-                    </td>
-                    <td class="subtotal-line__value">
-                      {{ transaction.amount | money }}
-                    </td>
-                  </tr>
+                        <tr class="subtotal-line">
+                          <td class="subtotal-line__title">
+                            <p>{{transaction_name}}</p>
+                          </td>
+                          <td class="subtotal-line__value" align="right">
+                            {{ transaction.amount | money }}
+                          </td>
+                        </tr>
 
-                  {% endif %}
-                  {% if transaction.kind == 'refund' %}
-                    {% if transaction.payment_details.credit_card_company %}
-                      {% assign refund_method_title = transaction.payment_details.credit_card_company %}
-                    {% else %}
-                      {% assign refund_method_title = transaction.gateway %}
                     {% endif %}
+                    {% if transaction.kind == 'refund' %}
+                      {% if transaction.payment_details.credit_card_company %}
+                        {% assign refund_method_title = transaction.payment_details.credit_card_company %}
+                      {% else %}
+                        {% assign refund_method_title = transaction.gateway %}
+                      {% endif %}
 
+                        <tr class="subtotal-line">
+                          <td class="subtotal-line__title">
+                            <p>Refund</p>
+                            <p>{{ refund_method_title | capitalize }}</p>
+                          </td>
+                          <td class="subtotal-line__value">
+                            - {{ transaction.amount | money }}
+                          </td>
+                        </tr>
+                        {% endif %}
+                      {% endfor %}
 
-                  <tr class="subtotal-line">
-                    <td class="subtotal-line__title">
-                      <p>Refund</p>
-                      <p>{{ refund_method_title | capitalize }}</small></p>
-                    </td>
-                    <td class="subtotal-line__value">
-                      - {{ transaction.amount | money }}
-                    </td>
-                  </tr>
+                  </table>
                 {% endif %}
-              {% endfor %}
-            </table>
-          {% endif %}
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
-    </table>
-  </td>
-</tr>
 
     <!-- SHIPPING // BILLING -->
     <tr>
