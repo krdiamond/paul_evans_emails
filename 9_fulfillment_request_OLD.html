@@ -1,0 +1,318 @@
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+	td {font-family: 'Lato', sans-serif; }
+	a {color: #999999; text-decoration: underline; font-weight: 700;}
+.item_image img{width: 100%;}
+
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a{-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;} /* Prevent WebKit and Windows mobile changing default text sizes */
+    table, td{mso-table-lspace: 0pt; mso-table-rspace: 0pt;} /* Remove spacing between tables in Outlook 2007 and up */
+    img{-ms-interpolation-mode: bicubic;} /* Allow smoother rendering of resized image in Internet Explorer */
+
+    /* RESET STYLES */
+    img{border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none;}
+    table{border-collapse: collapse !important;}
+    body{height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important;}
+
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+    }
+
+    /* MOBILE STYLES */
+    @media screen and (max-width: 525px) {
+
+        /* ALLOWS FOR FLUID TABLES */
+        .wrapper {
+          width: 100% !important;
+            max-width: 100% !important;
+        }
+        .thirdColumnContainer {
+          width: 100% !important;
+            max-width: 100% !important;
+            margin-bottom: 20px;
+        }
+
+        /* ADJUSTS LAYOUT OF LOGO IMAGE */
+        .logo img {
+          margin: 0 auto !important;
+        }
+
+        /* USE THESE CLASSES TO HIDE CONTENT ON MOBILE */
+        .mobile-hide {
+          display: none !important;
+        }
+
+        .img-max {
+          max-width: 100% !important;
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        /* FULL-WIDTH TABLES */
+        .responsive-table {
+          width: 100% !important;
+        }
+
+        /* UTILITY CLASSES FOR ADJUSTING PADDING ON MOBILE */
+
+        .padding-copy {
+             padding: 10px 5% 10px 5% !important;
+        }
+
+        .no-padding {
+          padding: 0 !important;
+        }
+
+        /* ADJUST BUTTONS ON MOBILE */
+        .mobile-button-container {
+            margin: 0 auto;
+            width: 100% !important;
+        }
+
+        .mobile-button {
+            padding: 15px !important;
+            border: 0 !important;
+            font-size: 16px !important;
+            display: block !important;
+        }
+        .help_right { width:68% !important;}
+        .help_left { width:30% !important;}
+
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
+
+<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+	<!-- LOGO -->
+    <tr>
+        <td bgcolor="#ffffff" align="center">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="wrapper">
+                <tr>
+                    <td align="center" valign="top" style="padding: 15px 0;" class="logo">
+                        <a href="{{ shop.domain }}" target="_blank">
+                       <img src="{{ 'email-logo.png' | file_img_url: '230x73' }}" />
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+	<!-- END LOGO -->
+	<!-- BANNER -->
+    <tr>
+        <td bgcolor="#000000" align="center" style="padding: 15px;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td>
+                        <!-- COPY -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="center" style="font-size: 32px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-weight: 700; padding-top: 20px;" class="padding-copy">{{ service_name }},<br>please fulfill order {{ name }}:</td>
+                            </tr>
+                            <tr>
+	                            <td align="center" style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 5px 0;" class="padding-copy">Total No. of all items: <span style="font-size:2em;"><strong>{{ items_to_fulfill_count }}</strong></span></td>
+                            </tr>
+                                                        <tr>
+	                            <td align="center" style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 5px 0 20px;" class="padding-copy">No. of different items: <span style="font-size:2em;"><strong>{{ items_to_fulfill | size }}</strong></span></td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+	<!-- END BANNER -->
+	<!-- 2 COLUMN Item Details -->
+    <tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 0 15px;">
+
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td style="border-top: 1px solid #eeeeee; padding-top: 15px;">
+                        <!-- COPY -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+			                <tr>
+				                <td align="left" style="color:#222222;font-size:18px;padding-bottom:5px;font-weight:700; text-transform: uppercase;">Items to fulfill</td>
+			                </tr>
+							{% for item in items_to_fulfill %}
+			                <tr>
+			                <td>
+                                    <!-- left COLUMN -->
+				                   <table cellpadding="0" cellspacing="0" border="0" width="30%" style="width: 30%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 0px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+	                                                    <td valign="top">
+		                                                    <div class="item_image" style="display: inline-block;">{% if item.image %}
+													            <img src="{{ item | img_url: 'compact' }}" align="left" width="60" height="60" class="order-list__product-image"/>{% endif %}
+													        </div>
+	                                                    </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0" width="68%" style="width: 68%;" align="right">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+													<tr>
+													<td valign="top" style=" font-weight: 700; color:#222222; font-size: 16px; padding-top: 10px;">
+														{{ item.title }}<br>
+											          <span style=" font-weight: 400; font-size: 14px;">SKU: {{ item.sku }}<br>
+											          Quantity: {{ item.quantity }}<br>
+											          Grams: {{ item.grams }}<br>
+											          Vendor: {{ item.vendor }}
+											            </span>
+
+														</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+			                </td>
+			                </tr>
+			                <tr><td style="border-bottom: 1px solid #eeeeee;"></td>
+			                </tr>
+                             {% endfor %}
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+	<!-- END 2 COLUMN Item Details -->
+
+
+
+	<!-- 2 COLUMN Billing / Shipping -->
+	{% if shipping_address %}
+	<tr>
+        <td bgcolor="#ffffff" align="center" style="padding: 15px; border-bottom: 1px solid #eeeeee;">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
+                <tr>
+                    <td valign="top">
+                        <!-- COPY -->
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			                <tr>
+				                <td>
+		                            <!-- left COLUMN -->
+				                   <table class="wrapper" cellpadding="0" cellspacing="0" border="0" width="48%" style="width: 48%;" align="left">
+                                        <tr>
+                                            <td style="padding: 0 0 20px 0;">
+                				            	<p align="left" style="color:#222222;font-size:18px; margin-bottom: 0px; font-weight:700; text-transform: uppercase;">Shipping Address</p>
+				                                <p align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;line-height: 1.4em; margin-top: 5px;">
+					                                  	{{ shipping_address.name }}<br>
+													  	{% if shipping_address.company %}
+															{{ shipping_address.company }}<br>
+														{% endif %}
+														{{ shipping_address.address1 }}<br>
+													  	{% if shipping_address.address2 %}
+															{{ shipping_address.address2 }}<br>
+														{% endif %}
+														{{ shipping_address.city }}, {{ shipping_address.province }}<br>
+														{{ shipping_address.zip }}<br>
+														{{ shipping_address.country }}
+														{% if shipping_address.phone %}
+															<br>Phone: {{ shipping_address.phone }}
+														{% endif %}
+												</p>
+											</td>
+                                        </tr>
+                                    </table>
+
+                                     <!-- RIGHT COLUMN -->
+                                    <table class="wrapper" cellpadding="0" cellspacing="0" border="0" width="48%" style="width: 48%;" align="right">
+                                        <tr>
+                                            <td>
+                                                <p align="left" style="color:#222222;font-size:18px; margin-bottom: 0px; font-weight:700; text-transform: uppercase;">Shipping Method</p>
+												<p align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;line-height: 1.4em; margin-top: 5px;">
+												    {% if shipping_method %}
+													       {{ shipping_method.title }}{% else %}None
+													{% endif %}
+												</p>
+											    <p align="left" style="color:#222222;font-size:18px; margin-bottom: 0px; font-weight:700; text-transform: uppercase;">Tracking Number</p>
+											    <p align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;line-height: 1.4em; margin-top: 5px;">
+											         {% if fulfillment.tracking_number %}{{ fulfillment.tracking_number }}{% else %}None{% endif %}
+												</p>
+											    <p align="left" style="color:#222222;font-size:18px; margin-bottom: 0px; font-weight:700; text-transform: uppercase;">Customer Email</p>
+											    <p align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;line-height: 1.4em; margin-top: 5px;">
+											        {{ email }}
+												</p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+			              	</tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    {% endif %}
+	<!-- END 2 COLUMN Billing / Shipping -->
+
+    <tr>
+		<td bgcolor="#f8f8f8" align="center" valign="top" height="40" colspan="3" style="font-size: 20px; font-weight: 700;padding: 30px 0 5px ; color:#222222;">Need help? Contact us today<br></td>
+	</tr>
+	<!-- 2 COLUMN need help -->
+
+			                			                <tr>
+			                <td style="padding:20px 0; border-bottom: 1px solid #eeeeee;">
+                                    <!-- left COLUMN -->
+				                   <table cellpadding="0" cellspacing="0" border="0" style="width: 38%;" align="left" class="help_left">
+                                        <tr>
+                                            <td style="padding: 0 0 0px 0;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                    <td valign="top" align="right"><a href="mailto:support@paulevansny.com"><img src="https://gallery.mailchimp.com/82c860c995/images/55b9b456-8db8-4819-af3c-5b26c04cb261.png" width="40" height="40" class="columnImage"/></a></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!-- RIGHT COLUMN -->
+                                    <table cellpadding="0" cellspacing="0" border="0"  style="width: 60%;" align="right" class="help_right">
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+													<tr>
+													<td valign="top" style=" font-weight: 700; color:#222222; font-size: 16px; padding-top: 0px;"><a href="mailto:{{shop.email}}" style="text-decoration: none; color: #222222;"><strong><em>EMAIL US</em></strong><br><span style="font-size: 12px;">{{shop.email}}</span></a>
+                     								</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+			                </td>
+			                </tr>
+
+                                    </table>
+			                </td>
+			                </tr>
+			             </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+	<!-- END 2 COLUMN need help -->
+
+
+
+
+</table>
