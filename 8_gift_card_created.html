@@ -11,28 +11,33 @@
 <!-- END PAUL EVANS MAIN LOGO -->
 
 
-<!-- INFO -->
+<!-- HEADER -->
   <tr>
-    <td id="shipping&billing" align="center">
+    <td id="header" align="center">
       <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
         <tr>
-          <td style="padding-top:48px">
-            <table width="484px" align="center" >
+          <td style="padding-top:48px;padding-bottom:48px;">
+            <table width="484px" align="center">
               <tr>
-                <td style="padding-bottom: 36px" align="center">
-                  <p style="width:389px;font-size: 32px;color: #4A4A4A;line-height: 40px;">Hi John, here is your Paul Evans gift card for $100.</p>
+                <td style="padding-bottom:26px" align="center">
+                  <p style="margin-top:0px;margin-bottom:0px;width:389px;font-size:32px;font-weight:700;color:#4A4A4A">Hi John, here is your Paul Evans gift card for $100.</p>
                 </td>
               </tr>
               <tr>
-                <td style="padding-bottom: 36px" align="center">
+                <td style="padding-bottom: 26px" align="center">
                   <img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Gift_Card.png?12754016752680350960" alt="gift card">
                 </td>
               </tr>
               <tr>
-                <p style="line-height: 1.4em; color: #222222; font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400; text-align: center;">Use this code at checkout to redeem your gift card:<br>
-                <span style="font-size: 26px; line-height: 1.4em; letter-spacing: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400;  text-align: center;"><span style="">{{gift_card.code}}</span></p>
-
-
+                <td>
+                  <p style="color: #4A4A4A;text-align:center;margin-top:0px;margin-bottom:18px;">Use this code at checkout to redeem your gift card:</p>
+                  <p style="color: #4A4A4A;font-size:24px;text-align:center;margin-top:0px;margin-bottom:36px;">{{gift_card.code}}</p>
+                </td>
+              </tr>
+              <tr align="center">
+                <td bgcolor="#4a4a4a" style="padding:15px 20px;margin-bottom:0px;display:inline-block;width:217px;">
+                  <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="{{ shop.url }}" target="_blank">Start Shopping</a>
+                </td>
               </tr>
             </table>
           </td>
@@ -40,6 +45,22 @@
       </table>
     </td>
   </tr>
+
+  <!-- PRINT GIFT CARD -->
+      <tr>
+        <td id="print_gift_card" align="center"  >
+          <table  align="center" bgcolor="#4a4a4a" width="552px" height="192px" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td class="padding-copy" align="center">
+                  <p style="color:#ffffff;width:392px;margin-top:0px;margin-bottom:24px;">To view or print your gift card <a style="color:#ffffff" href="{{ gift_card.url }}">click here</a></p>
+                  <p style="color:#ffffff;width:392px;margin-top:0px;margin-bottom:0px;">Did you purchase this gift card for someone else? Feel free to forward them this email.</p>
+                </td>
+              </tr>
+          </table>
+        </td>
+      </tr>
+
+
 
 <!-- FOOTER -->
   <tr>
@@ -137,47 +158,6 @@
 
 <style type="text/css">
 
-/* --------------------------------- HEADER --------------------------------- */
-.header_title {
-  font-size: 32px;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  color: #ffffff;
-  font-weight: 400;
-  padding-top: 48px;
-}
-
-.header_text {
-  font-size: 16px;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-    color: #ffffff;
-  letter-spacing: .1px;
-  text-align: center;
-  line-height: 18px;
-  padding: 24px 0 36px;
-}
-
-.header_button {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  padding: 15px 20px;
-  margin-bottom: 48px;
-  display: inline-block;
-  color: #4A4A4A;
-  background-color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 700;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 17px;
-  width:217px;
-}
-
-/* SELECT THIS SIZE: */
-
-
-
-
 /* --------------------------------- FOOTER --------------------------------- */
 
 .footer_title {
@@ -210,7 +190,6 @@
   padding: 15px 20px;
   margin-bottom: 60px;
   display: inline-block;
-  border: 1px solid #ffffff;
   width: 217px;
 }
 
@@ -224,16 +203,8 @@
 }
 
 
-
-
-
-
-
-
-
   @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 	td {font-family: 'Lato', sans-serif; }
-	a {color: #999999; text-decoration: underline; font-weight: 700;}
 .item_image img{width: 100%;}
 
     /* CLIENT-SPECIFIC STYLES */
