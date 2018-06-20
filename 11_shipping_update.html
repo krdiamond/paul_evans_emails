@@ -16,7 +16,9 @@
         <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
             <tr >
               <td class="padding-copy" align="center" style="padding-top:48px;padding-bottom:48px;">
-                <p style="width:484px;font-size:24px;line-height: 32px;color:#ffffff;margin-top:0px;margin-bottom:0px;"> Dear {{ billing_address.first_name }}, {% if fulfillment.line_items.size == line_items.size %}All{% else %}{% if unfulfilled_line_items.size == 0 %}The last{% else %}Some{% endif %}{% endif %} of the items from order {{ name }} have now been shipped: </p>
+                <p style="width:484px;font-size:24px;line-height:32px;color:#ffffff;margin-top:0px;margin-bottom:0px;">
+                  Dear {{ billing_address.first_name }}, the following shipped items from order {{ name }} have been updated with new shipping information
+                </p>
               </td>
             </tr>
         </table>
@@ -85,7 +87,7 @@
 
     <td id="Shipping" align="center">
       <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
-          <td width="484px" align="center" bgcolor="#ffffff" style="padding: 15px">
+          <td width="484px" align="center" bgcolor="#ffffff" style="padding-top:15px">
               {% if requires_shipping %}
 
               <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
