@@ -91,24 +91,23 @@
 </style>
 
 {% if fulfillment.item_count == item_count %}
-  {% capture shipment_name %}Your order is{% endcapture %}
+  {% capture shipment_name %}Your order has been{% endcapture %}
 {% elsif fulfillment.item_count > 1 %}
   {% if fulfillment_status == 'fulfilled' %}
-    {% capture shipment_name %}The last items in your order are{% endcapture %}
+    {% capture shipment_name %}The last items in your order have been{% endcapture %}
   {% else %}
-    {% capture shipment_name %}Some items in your order are{% endcapture %}
+    {% capture shipment_name %}Some items in your order have been{% endcapture %}
   {% endif %}
 {% else %}
   {% if fulfillment_status == 'fulfilled' %}
-    {% capture shipment_name %}The last item in your order is{% endcapture %}
+    {% capture shipment_name %}The last item in your order has been{% endcapture %}
   {% else %}
-    {% capture shipment_name %}One item in your order is{% endcapture %}
+    {% capture shipment_name %}One item in your order has been{% endcapture %}
   {% endif %}
 {% endif %}
 
-{% capture email_title %}{{ shipment_name }} out for delivery{% endcapture %}
-{% capture email_body %}{{ shipment_name }} out for delivery. Track your shipment to see the delivery status.{% endcapture %}
-{% capture email_emphasis %}Estimated delivery date: <strong>{{fulfillment.estimated_delivery_at | date: "%B %d, %Y"}}</strong>{% endcapture %}
+{% capture email_title %}{{ shipment_name }} delivered{% endcapture %}
+{% capture email_body %}{{ shipment_name }} delivered. Track your shipment to see the delivery status.{% endcapture %}
 
 <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
 	<!-- LOGO -->
@@ -134,19 +133,30 @@
                     <td>
                         <!-- COPY -->
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
                             <tr>
-                                <td align="center" style="font-size: 32px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-weight: 700; padding-top: 20px;" class="padding-copy">{{ billing_address.first_name }}, {{ email_title }}</td>
+                                <td align="center" style="font-size: 32px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-weight: 700; padding-top: 20px;" class="padding-copy">{{ billing_address.first_name }}, {{ email_title }}
+                                </td>
                             </tr>
                             <tr>
 	                            <td align="center" style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 15px 0 0;" class="padding-copy">Order <strong>{{ order_name }}</strong></td>
                             </tr>
                             <tr>
-	                            <td align="center" style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 15px 0 20px;" class="padding-copy"><p>{{ email_body }}</p>
-								{% if fulfillment.estimated_delivery_at %}<p>{{ email_emphasis }}</p>{% endif %}</td>
+                                <td align="center" style="font-size: 32px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-weight: 700; " class="padding-copy">
+                                    <table class="text-icon-container">
+						              <tr class="text-icon-row">
+						                <td class="text-icon"><img src="{{ 'question_reverse.png' | asset_img_url: '40x40' }}" class="text-icon__image" width="20" height="20"></td>
+						                <td class="text">
+						                  <p style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 15px 5px;">Haven't received your package yet? <a href="mailto:{{ shop.email }}">Let us know</a></p>
+						                </td>
+						              </tr>
+						            </table>
+                                </td>
                             </tr>
+
                             {% if order_status_url %}
-							                     <tr>
-                                <td align="center"><a href="{{ fulfillment.tracking_url }}" style="font-size:14px;padding: 15px 20px; margin-bottom: 20px; display: inline-block; color:#ffffff;text-decoration: none; border: 1px solid #ffffff; text-transform: uppercase; font-weight: 700" target="_blank">Track my shipment ❯</a></td>
+							<tr>
+                                <td align="center"><a href="{{ order_status_url }}" style="font-size:14px;padding: 15px 20px; margin-bottom: 20px; display: inline-block; color:#ffffff;text-decoration: none; border: 1px solid #ffffff; text-transform: uppercase; font-weight: 700" target="_blank">View your order ❯</a></td>
                             </tr>
                             <tr>
 	                            <td align="center" style="font-size: 14px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #dddddd; font-weight: 400; padding: 0 0 20px;" class="padding-copy"><a href="{{ shop.url }}" class="link__text"><span class='or'>or</span> visit our store</a></td>
@@ -163,6 +173,7 @@
         </td>
     </tr>
 	<!-- END BANNER -->
+
 	<!-- 2 COLUMN Item Details -->
     <tr>
         <td bgcolor="#ffffff" align="center" style="padding: 0 15px;">
@@ -243,7 +254,9 @@
     <tr>
 		<td bgcolor="#f8f8f8" align="center" valign="top" height="40" colspan="3" style="font-size: 20px; font-weight: 700;padding: 30px 0 5px ; color:#222222;">Need help with your order?<br></td>
 	</tr>
-	<!-- 2 COLUMN need help -->
+
+
+           <!-- 2 COLUMN need help -->
 
 			                			                <tr>
 			                <td style="padding:20px 0; border-bottom: 1px solid #eeeeee;">
@@ -285,6 +298,7 @@
         </td>
     </tr>
 	<!-- END 2 COLUMN need help -->
+
 
 
 
