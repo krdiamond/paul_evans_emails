@@ -13,39 +13,82 @@
 <!-- HEADER -->
     <tr>
       <td id="header" align="center"  >
-        <table  align="center" bgcolor="#ffffff" width="552px"  border="0" cellspacing="0" cellpadding="0">
+        <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="header_title padding-copy" align="center">
-                <p style="width:449px">Dear {{ customer.first_name }}, an account has been created for you at {{ shop.name }}.</p>
-              </td>
-            </tr>
-            <tr>
-              <td class="header_text padding-copy" align="center" style="padding-top:0px;">
-                <p style="margin-top:0px;margin-bottom:0px;">Please <a style="color:#4a4a4a" href="{{ customer.account_activation_url }}">login</a> to activate your account and set your password.</p>
-                {% if custom_message != blank %}
-                <p>{{ custom_message }}</p>
-                {% endif %}
-              </td>
-            </tr>
-            <tr>
-              <td align="center">
-                <a class="header_button" href="{{ customer.account_activation_url }}" target="_blank">Login to activate</a>
+              <td class="padding-copy" align="center" style="font-size: 32px;color: #ffffff;">
+                <p style="width:389px;margin-top:48px;margin-bottom:48px;padding: 0 0 0 0">Dear {{ customer.first_name }}, your {{ shop.name }} account is now active.</p>
               </td>
             </tr>
         </table>
       </td>
     </tr>
 
+
+
 <!-- INFO -->
   <tr>
-    <td id="shipping&billing" align="center">
-      <table class="responsive-table" align="center" bgcolor="#4a4a4a"  width="552px"  border="0" cellpadding="0" cellspacing="0" >
+    <td id="info" align="center">
+      <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
         <tr>
-          <td valign="center" height="144px">
+          <td style="padding-top:48px;padding-bottom:48px">
             <table width="484px" align="center" >
               <tr>
-                <td style="color:#ffffff" align="center">
-                    If the account was created in error, you can visit the link above and select "Decline" to decline this invitation.
+                <td align="left" style="padding-bottom:36px;">
+                  {% if custom_message != blank %}
+                  <p style="color:#4a4a4a;margin:0 0 0 0 ">{{ custom_message }}</p>
+                  {% endif %}
+                  <p style="color:#4a4a4a;margin:0 0 0 0 ">Do you know about our incredible <a style="color:#4a4a4a" href="https://www.paulevansny.com/pages/loyalty-program" target="_blank">loyalty program</a>? Now that you have a store account, you can start earning points on every purchase you make. Redeem points for discounts off future orders!</p>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding-bottom:36px;">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="10" >
+                    <tr>
+                      <td width="50" style="padding:0 22 0 0;">
+                        <img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Creat_Account_Icon2.png?7373907365217181866">
+                      </td>
+                      <td style="text-align: left;padding:0 0 0 0;">
+                        <p style="color:#4a4a4a;font-weight:700;margin:0 0 0 0;">Create an Account</p>
+                        <p style="color:#4a4a4a;margin:0 0 0 0;">You received<span style="color:#4C9CC8;font-weight:700;margin:0 0 0 0;"> 250 reward points </span>simply for signing up!</p
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+               </tr>
+               <tr>
+                 <td align="left" style="padding-bottom:36px;">
+                   <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                     <tr>
+                       <td width="50" style="padding:0 22 0 0;">
+                         <img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Make_Purchase_Icon2.png?9252277706794885728">
+                       </td>
+                       <td style="text-align: left;padding:0 0 0 0;">
+                         <p style="color:#4a4a4a;font-weight:700;margin:0 0 0 0;">Make a Purchase</p>
+                         <p style="color:#4a4a4a;margin:0 0 0 0;">Get 1 point for every dollar you spend with us.</p>
+                         <p style="color: #999999;margin:0 0 0 0;font-size:12px;">Get 1 point for every dollar you spend with us.</p>
+                       </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td align="left" style="padding-bottom:36px;">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="10">
+                   <tr>
+                     <td width="50" style="padding:0 22 0 0;">
+                       <img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Refer_Friend_Icon2.png?9252277706794885728">
+                     </td>
+                     <td style="text-align: left;padding:0 0 0 0;">
+                       <p style="color:#4a4a4a;font-weight:700;margin:0 0 0 0;">Refer a Friend</p>
+                       <p style="color:#4a4a4a;margin:0 0 0 0;">Get 2,500 points for every new referral that successfully completes a first-time shoe purchase.</p>
+                     </td>
+                   </tr>
+                  </table>
+                </td>
+               </tr>
+              <tr>
+                <td align="center">
+                  <a class="header_button" href="{{ shop.domain }}" target="_blank">Check Points Balance</a>
                 </td>
               </tr>
             </table>
@@ -54,6 +97,9 @@
       </table>
     </td>
   </tr>
+
+
+
 
   <!-- FOOTER -->
     <tr>
@@ -152,15 +198,11 @@
 <style type="text/css">
 
 /* --------------------------------- HEADER --------------------------------- */
-.header_title {
-  font-size: 32px;
-  color: #4a4a4a;
-  font-weight: 400;
-  padding-top: 48px;
-}
 
 .header_text {
-  color: #4a4a4a;
+  font-size: 16px;
+  font-family: 'Lato', Helvetica, Arial, sans-serif;
+    color: #ffffff;
   letter-spacing: .1px;
   text-align: center;
   line-height: 18px;
@@ -171,7 +213,6 @@
   font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-size: 12px;
   padding: 15px 20px;
-  margin-bottom: 48px;
   display: inline-block;
   color: #ffffff;
   background-color: #4a4a4a;
@@ -183,6 +224,7 @@
   line-height: 17px;
   width:217px;
 }
+
 
 /* SELECT THIS SIZE: */
 
@@ -244,7 +286,7 @@
 
   @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 	td {font-family: 'Lato', sans-serif; }
-	a {text-decoration: none;}
+	a {text-decoration: none}
 .item_image img{width: 100%;}
 
     /* CLIENT-SPECIFIC STYLES */
