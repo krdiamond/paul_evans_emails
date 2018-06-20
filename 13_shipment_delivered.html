@@ -17,8 +17,8 @@
 {% capture email_title %}{{ shipment_name }} delivered{% endcapture %}
 {% capture email_body %}{{ shipment_name }} delivered. Track your shipment to see the delivery status.{% endcapture %}
 
-<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4" style="max-width: 600px;" >
 
+<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4" style="max-width: 600px;" >
 <!-- PAUL EVANS MAIN LOGO -->
   <tr>
     <td id="logo" align="center" style="padding:36.74px 0" >
@@ -35,35 +35,40 @@
           <td id="header" align="center"  >
             <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="header_title padding-copy" align="center">{{ billing_address.first_name }}, Your order is out for delivery.</td>
+                <td class="header_title padding-copy" align="center">{{ billing_address.first_name }}, {{ email_title }}</td>
               </tr>
               <tr>
-                <td class="header_text padding-copy" align="center">
-                  Order Number:
-                  <span>{{ order_name }}</span>
-                    {% if fulfillment.estimated_delivery_at %}
-                    &nbsp;&nbsp;|&nbsp;&nbsp; Estimated Delivery Date:&nbsp;
-                  <span>{{ email_emphasis }}</span>
-                  {% endif %}
+                <td align="center" style="color:#ffffff; padding-top:20px;" class="padding-copy">
+                  Order {{ order_name }}
+                </td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-top: 10px;padding-bottom: 20px;"
+">
+                  <img src="{{ 'question_reverse.png' | asset_img_url: '40x40' }}" width="20" height="20">
+                  <span style="font-size: 14px;color: #ffffff; padding:0 0 0 0 ;">Haven't received your package yet?</span>
+                  <span style="font-size: 14px;color: #ffffff; padding:0 0 0 0 ;" href="mailto:{{ shop.email }}">Let us know</a></span>
                 </td>
               </tr>
               {% if order_status_url %}
               <tr>
-                  <td align="center">
-                    <a bgcolor="#4a4a4a" class="header_button" href="{{ fulfillment.tracking_url }}" target="_blank">Track my shipment</a>
-                  </td>
+                <td align="center">
+                  <a bgcolor="#4a4a4a" class="header_button" href="{{ order_status_url }}" target="_blank">View your order</a></td>
+              </tr>
+              <tr>
+                <td align="center" style="padding-bottom: 28px;" class="padding-copy">
+                  <a style="text-decoration:none;font-size:14px;color:#ffffff;padding: 0 0 0 0" href="{{ shop.url }}" class="link__text">or visit our store</a>
+                </td>
               </tr>
               {% else %}
               <tr>
                 <td align="center">
-                  <a bgcolor="#4a4a4a" class="header_button" <a href="{{ shop.url }}" target="_blank">Visit Our Store</a>
-                </td>
+                  <a bgcolor="#4a4a4a" class="header_button" href="{{ shop.url }}" target="_blank">Visit Our Store</a></td>
               </tr>
-            {% endif %}
+              {% endif %}
             </table>
           </td>
         </tr>
-
 
 
     <!-- ITEM_LIST -->
@@ -123,6 +128,8 @@
       </table>
     </td>
   </tr>
+
+
 
 
 
@@ -243,10 +250,9 @@
 }
 
 .header_button {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
   font-size: 12px;
   padding: 15px 20px;
-  margin-bottom: 48px;
+  margin-bottom: 28px;
   display: inline-block;
   color: #4A4A4A;
   background-color: #ffffff;
