@@ -83,51 +83,37 @@
 
       <!-- SHIPPING -->
 
-          <td id="Shipping" align="center">
-            <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
-                <td>
-                  <table width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;" >
+    <td id="Shipping" align="center">
+      <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
+          <td width="484px" align="center" bgcolor="#ffffff" style="padding: 15px">
+              {% if requires_shipping %}
 
-                    {% if requires_shipping %}
-                      <tr>
-                        <td bgcolor="#ffffff" align="center" style="padding: 15px; border-bottom: 1px solid #eeeeee;">
-                          <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
-                            <td>
-                              <table class="wrapper" cellpadding="0" cellspacing="0" border="0" align="left">
-                                 <tr>
-                                   <td style="padding: 0 0 20px 0;">
-                                     <p style="color:#4A4A4A;margin-top:0px;margin-bottom:7px;font-weight:700">They are being shipped {% if fulfillment.tracking_company %}with {{ fulfillment.tracking_company }} {% endif %}with tracking number:</p>
-                                     {% if fulfillment.tracking_number %}
-                   						      {% assign tracking_count = fulfillment.tracking_numbers.count %}
-                                    {% for tracking_number in fulfillment.tracking_numbers %}
-                                    <p style="color:#4A4A4A;margin-top:0px;margin-bottom:0px">{{ tracking_number }}</p>
-                                    {% endfor %}
-                                   </td>
-              			              </tr>
-                                {% endif %}
-                              </table>
-                              <tr align="center">
-                                <td align="center" bgcolor="#4a4a4a" style="padding:15px 20px;margin-top:24px;margin-bottom:48px;display:inline-block;width:217px;">
-                                  <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="{% for tracking_url in fulfillment.tracking_urls %}{{  tracking_url }}{% endfor %}" target="_blank">Track Shipment</a>
-                                </td>
-                              </tr>
-                            </td>
-                          {% endif %}
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" class="responsive-table">
+                <td>
+                  <table class="wrapper" cellpadding="0" cellspacing="0" border="0" align="center">
+                    <tr>
+                      <td align="center">
+                        <p style="color:#4A4A4A;margin-top:0px;margin-bottom:7px;font-weight:700">They are being shipped {% if fulfillment.tracking_company %}with {{ fulfillment.tracking_company }} {% endif %}with tracking number</p>
+                         {% if fulfillment.tracking_number %}
+       						       {% assign tracking_count = fulfillment.tracking_numbers.count %}
+                         {% for tracking_number in fulfillment.tracking_numbers %}
+                        <p style="color:#4A4A4A;margin-top:0px;margin-bottom:0px">{{ tracking_number }}</p>
+                        {% endfor %}
+                      </td>
+    		            </tr>
+                    <tr align="center">
+                      <td align="center" bgcolor="#4a4a4a" style="padding:15px 20px;margin-top:24px;margin-bottom:48px;display:inline-block;width:217px;">
+                        <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="{% for tracking_url in fulfillment.tracking_urls %}{{  tracking_url }}{% endfor %}" target="_blank">Track Shipment</a>
+                      </td>
+                    </tr>
+                  {% endif %}
                 </table>
               </td>
-
-
-
-
-
-
-
-
+              {% endif %}
+            </table>
+          </td>
+        </table>
+      </td>
 
 
 
@@ -142,7 +128,7 @@
           </td>
         </tr>
         <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
-          <td class="footer_button" bgcolor="#4a4a4a">
+          <td class="footer_button" style="border: 1px solid #C0C0C0;">
             <a class="footer_button_text" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a></td>
         </tr>
       </table>
@@ -307,7 +293,7 @@
 .footer_button_text {
   font-size: 14px;
   font-family: 'Lato', Helvetica, Arial, sans-serif;
-  color:#ffffff;
+  color: #4A4A4A;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 700;
