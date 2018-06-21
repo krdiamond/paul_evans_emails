@@ -1,4 +1,4 @@
-<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4" style="max-width: 600px;" >
+<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4" >
 
   <!-- PAUL EVANS MAIN LOGO -->
     <tr>
@@ -12,9 +12,11 @@
   <!-- HEADER -->
       <tr>
         <td id="header" align="center"  >
-          <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
+          <table  align="center" bgcolor="#4a4a4a" width="552px" height="262px" border="0" cellspacing="0" cellpadding="0">
             <tr>
-              <td class="header_title padding-copy" align="center">{{ customer.first_name }}, thank you for your order!</td>
+              <td align="center">
+                <p style="font-size: 32px;color:#ffffff;padding-top:48px;margin:0 0 0 0;">{{ customer.first_name }}, thank you for your order!</p>
+              </td>
             </tr>
             <tr>
               <td class="header_text padding-copy" align="center">
@@ -25,11 +27,15 @@
             </tr>
             <tr>
               <td align="center">
-                <a bgcolor="#4a4a4a" class="header_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">View order</a></td>
+                <a class="header_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">View order</a>
+              </td>
             </tr>
           </table>
         </td>
       </tr>
+
+
+
 
   <!-- SHIPPING // BILLING -->
   <tr>
@@ -85,7 +91,7 @@
           <td style="padding:12px">
             <table width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;" >
                 <tr>
-                  <td align="left" style="font-weight:700;">Order Details</td>
+                  <td align="left" style="font-weight:700;color:#4A4A4A;line-height: 18px;">Order Details</td>
                 </tr>
                 {% for line in line_items %}
                 <tr>
@@ -94,7 +100,7 @@
                   <!-- left COLUMN -->
                    <table cellpadding="0" cellspacing="0" border="0" width="30%" align="left">
                       <tr>
-                        <td style="padding: 0 0 0px 0;">
+                        <td style="padding: 0 0 0 0;">
                           <table cellpadding="0" cellspacing="0" border="0" width="100%">
                             <tr>
                               <td valign="top"><div class="item_image" style="display: inline-block;margin-right:17px;">{{ line |  img_url: 'compact' | img_tag }}</div></td>
@@ -103,7 +109,6 @@
                         </td>
                       </tr>
                     </table>
-
                     <!-- RIGHT COLUMN -->
                     <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right">
                       <tr>
@@ -111,8 +116,8 @@
                           <table cellpadding="0" cellspacing="0" border="0" width="100%">
                             <tr>
                               <td valign="center">
-                                <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
-                                <p style="color:#4A4A4A;  margin:0px;">{{ line.quantity }} x {{ line.price | money }}</p>
+                                <p style="font-weight:700;color:#4A4A4A;line-height: 18px;margin:0 0 12"> {{line.title }}</p>
+                                <p style="color:#4A4A4A;margin:0px;line-height: 18px;">{{ line.quantity }} x {{ line.price | money }}</p>
                               </td>
                             </tr>
                           </table>
@@ -138,25 +143,25 @@
             <table width="484px" align="center" style="margin-top:24px;margin-bottom:48px" >
               {% if discounts %}
                 <tr>
-                  <td style="padding: 0 0 7px" valign="top" align="left">Discount (code: {{ discounts.first.code }}) : {{ discounts_savings | money_with_currency }}</td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="left">Discount (code: {{ discounts.first.code }}) : {{ discounts_savings | money_with_currency }}</td>
                   <td style="padding: 0 0 7px" valign="top" align="right">{{ discounts_savings | money_with_currency }}</td>
                 </tr>
               {% endif %}
                 <tr>
-                  <td style="padding: 0 0 7px" valign="top" align="left">Subtotal:</td>
-                  <td style="padding: 0 0 7px" valign="top" align="right">{{ subtotal_price | money  }}{% for tax_line in tax_lines %}</td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="left">Subtotal:</td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="right">{{ subtotal_price | money  }}{% for tax_line in tax_lines %}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0 0 7px" valign="top" align="left">{{ tax_line.title }} : </td>
-                  <td style="padding: 0 0 7px" valign="top" align="right">{{ tax_line.price | money  }}{% endfor %}{% if requires_shipping %}</td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="left">{{ tax_line.title }} : </td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="right">{{ tax_line.price | money  }}{% endfor %}{% if requires_shipping %}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0 0 7px" valign="top" align="left">Shipping: </td>
-                  <td style="padding: 0 0 7px" valign="top" align="right">{{ shipping_price | money }}{% endif %}</td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="left">Shipping: </td>
+                  <td style="padding: 0 0 7px;color:#4A4A4A;" valign="top" align="right">{{ shipping_price | money }}{% endif %}</td>
                 </tr>
                 <tr>
-                  <td style="padding: 0 0 7px;font-weight: 700" valign="top" align="left" >Total:</td>
-                  <td style="padding: 0 0 7px;font-weight: 700" valign="top" align="right" >{{ total_price | money }}</td>
+                  <td style="padding: 0 0 7px;font-weight: 700;color:#4A4A4A;" valign="top" align="left" >Total:</td>
+                  <td style="padding: 0 0 7px;font-weight: 700;color:#4A4A4A;" valign="top" align="right" >{{ total_price | money }}</td>
                 </tr>
               </table>
             </td>
@@ -168,20 +173,21 @@
 <!-- FOOTER -->
   <tr>
     <td id="footer" align="center" >
-    <table class="responsive-table" align="center" width="552px"   border="0" cellpadding="0" cellspacing="0" >
+    <table class="responsive-table" align="center" width="552px" border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #C0C0C0;" >
       <tr>
-        <td align="center" style="padding:60px 0 36px"  >
-          <p class="footer_title">Need Help?</p>
-          <p class="footer_text" style="width:360px">Our Customer Service team is happy to help with any issues related to your order.<p>
+        <td align="center" style="padding:60px 0 36px">
+          <p style="font-size:24px;color:#4A4A4A;line-height: 32px;margin:0 0 12px;">Need Help?</p>
+          <p style="width:360px;font-size: 14px;color:#4A4A4A;line-height: 21px;margin:0 0 0 0;">Our Customer Service team is happy to help with any issues related to your order.<p>
         </td>
       </tr>
-      <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
-        <td class="footer_button" bgcolor="#4a4a4a">
-          <a class="footer_button_text" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a></td>
+      <tr >
+        <td align="center" >
+          <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a></td>
       </tr>
     </table>
   </td>
 </tr>
+
 
 <tr>
   <td id="footer" align="center">
@@ -243,15 +249,14 @@
       </td>
     </tr>
     <tr>
-      <td>
-        <p class="footer_text" width="374px">support@paulevansny.com <br> Paul Evans, 35 Christopher Street, New York, NY 10014, USA<p>
+      <td align="center">
+          <a style="font-size:14px;color: #4A4A4A;line-height: 21px;" href="mailto:{{shop.email}}">support@paulevansny.com</a>
+          <p style="font-size:14px;color: #4A4A4A;line-height: 21px;margin:0 0 0 0;"> Paul Evans, 35 Christopher Street, New York, NY 10014, USA</p>
       </td>
     </tr>
   </table>
 </td>
 </tr>
-<!-- END FOOTER -->
-
 
 </table>
 
@@ -259,11 +264,7 @@
 
 <style type="text/css">
 /* --------------------------------- HEADER --------------------------------- */
-.header_title {
-  font-size: 32px;
-  color: #ffffff;
-  padding-top: 48px;
-}
+
 
 .header_text {
   color: #ffffff;
@@ -287,36 +288,36 @@
 
 /* --------------------------------- FOOTER --------------------------------- */
 
-.footer_title {
-  font-size: 24px;
-  line-height: 32px;
-  margin-bottom: 13px;
-}
 
-.footer_text {
-  font-size: 14px;
-  text-align: center;
-  line-height: 21px;
-}
+
+
 
 .footer_button {
-  padding: 15px 20px;
-  margin-bottom: 60px;
-  display: inline-block;
-  width: 217px;
-}
+    font-size: 12px;
+    padding: 15px 20px;
+    margin-bottom: 48px;
+    display: inline-block;
+    color: #ffffff;
+    background-color: #4A4A4A;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    width:217px;
 
-.footer_button_text {
-  font-size: 14px;
-  color:#ffffff;
-  text-decoration: none;
-  font-weight: 700;
-}
+  }
 
 
   @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 	td {font-family: 'Lato', sans-serif; }
     a {text-decoration: none;}
+    a[x-apple-data-detectors] {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+}
   .item_image img{width: 100%;}
 
 
