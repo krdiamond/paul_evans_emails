@@ -1,4 +1,4 @@
-<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4" style="max-width: 600px;" >
+<table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" bgcolor="#F1F3F4">
 
 <!-- PAUL EVANS MAIN LOGO -->
   <tr>
@@ -8,13 +8,12 @@
         </a>
     </td>
   </tr>
-<!-- END PAUL EVANS MAIN LOGO -->
 
 <!-- HEADER -->
 
     <tr>
       <td id="header" align="center"  >
-        <table  align="center" bgcolor="#4a4a4a" width="552px"  border="0" cellspacing="0" cellpadding="0">
+        <table  align="center" bgcolor="#4a4a4a" width="552px" height="243px" border="0" cellspacing="0" cellpadding="0">
             <tr>
               <td class="padding-copy" align="center">
                 <p style="margin-top:48px;margin-bottom:24px;width:484px;font-size:32px;color: #ffffff;">Did you know you can buy these shoes for $33.25 per month?*</p>
@@ -25,6 +24,13 @@
                 <p style="margin-top:0px;margin-bottom:48px;width:436px;color: #ffffff;">Simply select Affirm at checkout to buy these new shoes now, and pay for them in monthly installments</p>
               </td>
             </tr>
+            {% if custom_message != blank %}
+            <tr>
+              <td align="center" style="font-size: 14px; color: #FFFFFF;line-height: 18px;" class="padding-copy">
+                {{ custom_message }}{% elsif reserve_inventory_until %}{{ email_body }}
+              </td>
+            </tr>
+            {% endif %}
         </table>
       </td>
     </tr>
@@ -34,45 +40,46 @@
       <td id="item_list" align="center">
         <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
           <tr>
-            <td>
+            <td align="center">
               <table width="484px" align="center" style="margin-top:9px; " >
-                {{ custom_message }}
                 {% for line in line_items %}
                 <tr>
                   <td style="border-bottom:1px solid #C0C0C0;padding-bottom:12px">
 
                   <!-- left COLUMN -->
-                   <table cellpadding="0" cellspacing="0" border="0" width="30%" align="left">
-                      <tr>
-                        <td style="padding: 0 0 0px 0;">
-                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                              <td valign="top"><div class="item_image" style="display:inline-block;margin-right:17px;color:#4A4A4A">{{ line |  img_url: 'medium' | img_tag }}</div></td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
+                     <table cellpadding="0" cellspacing="0" border="0" width="30%" align="left">
+                        <tr>
+                          <td style="padding: 0 0 0px 0;">
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                              <tr>
+                                <td valign="top">
+                                  <div class="item_image" style="display:inline-block;margin-right:17px;color:#4A4A4A">{{ line |  img_url: 'medium' | img_tag }}</div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
 
 
-                    <!-- RIGHT COLUMN -->
-                    <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right">
-                      <tr>
-                        <td>
-                          <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                            <tr>
-                              <td valign="center">
-                                <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
-                                <p style="color:#4A4A4A;margin:0px;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
+                      <!-- RIGHT COLUMN -->
+                      <table cellpadding="0" cellspacing="0" border="0" width="70%" align="right">
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                              <tr>
+                                <td valign="center">
+                                  <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
+                                  <p style="color:#4A4A4A;margin:0px;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
                   </td>
                 </tr>
-               {% endfor %}
+                               {% endfor %}
              </table>
             </td>
           </tr>
@@ -85,11 +92,12 @@
       <td id="view_my_cart_button" align="center">
         <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
           <tr>
-            <td style="padding-top:36px">
+            <td style="padding-top:36px" align="center">
               <table width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;" >
                 <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
                   <td class="footer_button" bgcolor="#4a4a4a" style="padding: 15px 20px;margin-bottom: 36px;display: inline-block;width: 217px;">
-                    <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="http://www.paulevansny.com/cart" target="_blank">View my cart</a></td>
+                    <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="http://www.paulevansny.com/cart" target="_blank">View my cart</a>
+                  </td>
                 </tr>
               </table>
             </td>
@@ -103,35 +111,21 @@
       <td id="shipping&billing" align="center">
         <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
           <tr>
-            <td style="padding-top:36px">
+            <td style="padding-top:36px" align="center">
               <table width="484px" align="center" >
+                <tr >
+                  <td align="center" >
+                    <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a>
+                  </td>
+                </tr>
                 <tr>
                   <td style="padding-bottom: 36px" align="left">
                     <p style="color:#4A4A4A;margin-top:0px;margin-bottom:0px;font-weight:700">
-                        <svg width="47px" height="14px" viewBox="0 0 47 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <defs></defs>
-                            <g id="Emails-(Shopify)---High-Fidelity---001" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <g id="Email---006A---Abandoned-Checkout" transform="translate(-108.000000, -634.000000)" fill="#2BC2DF" fill-rule="nonzero">
-                                    <g id="Secondary-Module" transform="translate(62.000000, 360.000000)">
-                                        <g id="Affirm-for-Paul-Evans-is-Simple" transform="translate(46.000000, 273.000000)">
-                                            <g id="blue_logo-solid_bg" transform="translate(0.000000, 1.000000)">
-                                                <path d="M25.4965851,9.7319878e-07 C24.6686051,0.00188596562 23.9987458,0.674291887 24.0000018,1.50227385 C24.0012577,2.33025582 24.6731539,3.00062646 25.5011357,2.99999956 C26.3291176,2.99937266 26.9999979,2.32798535 27,1.50000243 C26.9995474,1.10172438 26.840898,0.719938586 26.558953,0.43863369 C26.277008,0.157328794 25.8948628,-0.000452130232 25.4965851,9.7319878e-07 Z" id="Shape"></path>
-                                                <rect id="Rectangle-path" x="24" y="3" width="2" height="11"></rect>
-                                                <path d="M33.2857332,3 C32.0913072,3 30.7177173,3.97066754 30.265428,5.18759703 L30.265428,3.27592124 L28,3.27592124 L28,14 L30.388852,14 L30.388852,9.01993627 C30.388852,6.91232944 31.1055076,5.73584443 32.6670206,5.70259008 L34,3.06201487 C33.7634897,3.02250774 33.5248144,3.0017852 33.2857332,3 Z" id="Shape"></path>
-                                                <path d="M43.1487762,3 C42.1094546,3 41.1775376,3.43528738 40.5242266,4.22492028 L40.4903094,4.26539122 L40.4571997,4.22492028 C39.8111567,3.43528738 38.884085,3 37.8439558,3 C35.6167226,3 34,4.8086011 34,7.29981195 L34,14 L36.3838986,14 L36.3838986,7.24225329 C36.3838986,6.19630447 36.9572618,5.52088954 37.8439558,5.52088954 C38.7306498,5.52088954 39.3048205,6.19630447 39.3048205,7.24225329 L39.3048205,14 L41.6951795,14 L41.6951795,7.24225329 C41.6951795,6.19630447 42.2685427,5.52088954 43.1560442,5.52088954 C44.0435458,5.52088954 44.6169089,6.19630447 44.6169089,7.24225329 L44.6169089,14 L47,14 L47,7.29981195 C46.9959622,4.8086011 45.3792397,3 43.1487762,3 Z" id="Shape"></path>
-                                                <path d="M21.0760583,3.00976431 C21.0760583,2.67746803 21.1200483,2.2802306 21.3997585,2.06179218 C21.7060288,1.81973879 22.1542292,1.86443855 22.5169396,1.88299316 L23,0.0511466491 L22.7418698,0.0376523838 C21.7027088,-0.0188548521 20.6095978,-0.0972902691 19.698257,0.515012018 C18.9255263,1.03369784 18.581906,1.92684952 18.581906,2.84361617 L18.581906,3.94002523 L15.6129933,3.94002523 L15.6129933,3.01229449 C15.6129933,2.68168499 15.6561533,2.28866451 15.9300536,2.06769592 C16.2363239,1.82058219 16.6903343,1.86696872 17.0530446,1.88552334 L17.536105,0.0536768238 L17.2779748,0.0401825586 C16.2305138,-0.0171680689 15.1266128,-0.0947600943 14.214442,0.534410025 C13.4574813,1.05562602 13.122161,1.94118718 13.122161,2.84698974 L13.122161,3.94339879 L12,3.94339879 L12,5.765968 L13.122991,5.765968 L13.122991,14 L15.6129933,14 L15.6129933,5.765968 L18.581076,5.765968 L18.581076,14 L21.0710782,14 L21.0710782,5.765968 L22.7949898,5.765968 L22.7949898,3.93665166 L21.0760583,3.93665166 L21.0760583,3.00892092 L21.0760583,3.00976431 Z" id="Shape"></path>
-                                                <path d="M9.99836668,14 L9.99836668,4.53149131 C9.98997294,3.74839706 9.45416045,3.0941111 8.74724377,3.0037327 C8.27929767,2.97048148 7.78195182,3.1592046 7.48877093,3.57709152 L0,14 L1.84565129,14 C2.58064516,14 3.16700694,13.5785184 3.61045325,12.9485426 L7.75826868,7.17631108 L7.75826868,14 L10,14 L9.99836668,14 Z" id="Shape"></path>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </g>
-                        </svg>
-                        for Paul Evans is simple</p>
+                        <img style="padding:0 6px 0 0" src="https://cdn.shopify.com/s/files/1/0217/3274/files/affirm.png?16005295528867928912"/>for Paul Evans is simple</p>
                     <ol style="padding-left:20px;margin-top:12px;">
-                      <li style="padding-bottom:7px">Place the items you want in your cart</li>
-                      <li style="padding-bottom:7px">Select to pay with Affirm when checking out</li>
-                      <li style="padding-bottom:7px">Choose the plan that best matches your monthly budget, and confirm your purchase</li>
+                      <li style="padding-bottom:7px;color:#4A4A4A">Place the items you want in your cart</li>
+                      <li style="padding-bottom:7px;color:#4A4A4A">Select to pay with Affirm when checking out</li>
+                      <li style="padding-bottom:7px;color:#4A4A4A">Choose the plan that best matches your monthly budget, and confirm your purchase</li>
                     </ol>
                   </td>
                 </tr>
@@ -143,157 +137,84 @@
     </tr>
 
 
-<!-- FOOTER -->
-  <tr>
-    <td id="footer" align="center" >
-    <table class="responsive-table" align="center" width="552px"   border="0" cellpadding="0" cellspacing="0" >
-      <tr style="border-bottom: 1px solid #C0C0C0C0">
-        <td align="center" style="padding:60px 0 60px;"  >
-          <p style="font-size:12px;color:#4A4A4A;line-height: 21px;width:484px;margin-top:0px;margin-bottom:0px;"> *Monthly payment based on the advertised purchase price at 0% APR for 12 months. Rates from 0-30% APR. Eligibility and rates for Affirm financing are based on applicant’s credit worthiness. Affirm loans made by Cross River Bank, member FDIC. Learn more at affirm.com/buy-with-affirm.</p>
-        </td>
-      </tr>
+    <!-- FOOTER -->
       <tr>
-        <td align="center" style="padding:60px 0 36px"  >
-          <p class= "footer_title">Need Help?</p>
-          <p class="footer_text help_sizing" >Our Customer Service team is happy to help with any issues related to your order.<p>
-        </td>
-      </tr>
-      <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
-        <td class="footer_button" bgcolor="#4a4a4a">
-          <a class="footer_button_text" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a></td>
-      </tr>
-    </table>
-  </td>
-</tr>
-
-
-<tr>
-  <td id="footer" align="center">
-  <table class="responsive-table" align="center" width="374px" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 36px" >
-    <tr>
-      <td align="center"  style="padding:60px 0 20px">
-        <!--INSTAGRAM SVG ICON -->
-        <svg style="padding-right: 35px" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-                <path d="M12.0000238,0 C15.2590043,0 15.6676571,0.0138138818 16.9475847,0.0722132578 C18.2248447,0.130469732 19.0971676,0.333343257 19.860456,0.630008276 C20.6495621,0.936628817 21.3187732,1.34694874 21.985936,2.01406396 C22.6530513,2.68122682 23.0633712,3.35043794 23.3700394,4.13954402 C23.6666567,4.90283244 23.8695303,5.77515526 23.9277867,7.05241535 C23.9861861,8.33234294 24,8.74099567 24,12.0000238 C24,15.2590043 23.9861861,15.6676571 23.9277867,16.9475847 C23.8695303,18.2248447 23.6666567,19.0971676 23.3700394,19.860456 C23.0633712,20.6495621 22.6530513,21.3187732 21.985936,21.985936 C21.3187732,22.6530513 20.6495621,23.0633712 19.860456,23.3700394 C19.0971676,23.6666567 18.2248447,23.8695303 16.9475847,23.9277867 C15.6676571,23.9861861 15.2590043,24 12.0000238,24 C8.74099567,24 8.33234294,23.9861861 7.05241535,23.9277867 C5.77515526,23.8695303 4.90283244,23.6666567 4.13954402,23.3700394 C3.35043794,23.0633712 2.68122682,22.6530513 2.01406396,21.985936 C1.34694874,21.3187732 0.936628817,20.6495621 0.630008276,19.860456 C0.333343257,19.0971676 0.130469732,18.2248447 0.0722132578,16.9475847 C0.0138138818,15.6676571 0,15.2590043 0,12.0000238 C0,8.74099567 0.0138138818,8.33234294 0.0722132578,7.05241535 C0.130469732,5.77515526 0.333343257,4.90283244 0.630008276,4.13954402 C0.936628817,3.35043794 1.34694874,2.68122682 2.01406396,2.01406396 C2.68122682,1.34694874 3.35043794,0.936628817 4.13954402,0.630008276 C4.90283244,0.333343257 5.77515526,0.130469732 7.05241535,0.0722132578 C8.33234294,0.0138138818 8.74099567,0 12.0000238,0 Z M12.0000238,2.1621583 C8.79587013,2.1621583 8.41632182,2.17440026 7.15097025,2.23213276 C5.9809821,2.28548292 5.34559117,2.48097316 4.92274348,2.64531072 C4.3626144,2.86299845 3.96286924,3.12303286 3.54297487,3.54297487 C3.12303286,3.96286924 2.86299845,4.3626144 2.64531072,4.92274348 C2.48097316,5.34559117 2.28548292,5.9809821 2.23213276,7.15097025 C2.17440026,8.41632182 2.1621583,8.79587013 2.1621583,12.0000238 C2.1621583,15.2041299 2.17440026,15.5836782 2.23213276,16.8490298 C2.28548292,18.0190179 2.48097316,18.6544088 2.64531072,19.0772565 C2.86299845,19.6373856 3.1230805,20.0371308 3.54297487,20.4570251 C3.96286924,20.8769671 4.3626144,21.1370016 4.92274348,21.3546893 C5.34559117,21.5190268 5.9809821,21.7145171 7.15097025,21.7678672 C8.41617891,21.8255997 8.79563196,21.8378417 12.0000238,21.8378417 C15.204368,21.8378417 15.5838687,21.8255997 16.8490298,21.7678672 C18.0190179,21.7145171 18.6544088,21.5190268 19.0772565,21.3546893 C19.6373856,21.1370016 20.0371308,20.8769671 20.4570251,20.4570251 C20.8769671,20.0371308 21.1370016,19.6373856 21.3546893,19.0772565 C21.5190268,18.6544088 21.7145171,18.0190179 21.7678672,16.8490298 C21.8255997,15.5836782 21.8378417,15.2041299 21.8378417,12.0000238 C21.8378417,8.79587013 21.8255997,8.41632182 21.7678672,7.15097025 C21.7145171,5.9809821 21.5190268,5.34559117 21.3546893,4.92274348 C21.1370016,4.3626144 20.8769671,3.96286924 20.4570251,3.54297487 C20.0371308,3.12303286 19.6373856,2.86299845 19.0772565,2.64531072 C18.6544088,2.48097316 18.0190179,2.28548292 16.8490298,2.23213276 C15.5836782,2.17440026 15.2041299,2.1621583 12.0000238,2.1621583 Z M12.0000238,5.8378417 C15.4032879,5.8378417 18.1621583,8.59671206 18.1621583,12.0000238 C18.1621583,15.4032879 15.4032879,18.1621583 12.0000238,18.1621583 C8.59671206,18.1621583 5.8378417,15.4032879 5.8378417,12.0000238 C5.8378417,8.59671206 8.59671206,5.8378417 12.0000238,5.8378417 Z M12.0000238,16 C14.2091493,16 16,14.2091493 16,12.0000238 C16,9.79085069 14.2091493,8 12.0000238,8 C9.79085069,8 8,9.79085069 8,12.0000238 C8,14.2091493 9.79085069,16 12.0000238,16 Z M19.8456418,5.59438394 C19.8456418,6.38968246 19.2009146,7.03436203 18.4056161,7.03436203 C17.6103652,7.03436203 16.965638,6.38968246 16.965638,5.59438394 C16.965638,4.79908543 17.6103652,4.15435822 18.4056161,4.15435822 C19.2009146,4.15435822 19.8456418,4.79908543 19.8456418,5.59438394 Z" id="path-2"></path>
-            </defs>
-            <g id="Emails-(Shopify)---High-Fidelity---001" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g id="Email---001A---Order-Confirmation" transform="translate(-313.000000, -1352.000000)">
-                    <g id="Social/Copyright" transform="translate(164.000000, 1352.000000)">
-                        <g id="Social" transform="translate(149.000000, 0.000000)">
-                            <g id="Instagram">
-                                <mask id="mask-1" fill="white">
-                                    <use xlink:href="#path-2"></use>
-                                </mask>
-                                <use id="Mask" fill="#FFFFFF" xlink:href="#path-2"></use>
-                                <g id="general/fill/gray/007" mask="url(#mask-1)" fill="#272727">
-                                    <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
-                                </g>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </svg>
-        <!--FACEBOOK SVG ICON -->
-        <svg width="10px" height="21px" >
-          <defs>
-              <path d="M2.16144718,4.06703138 C2.16144718,4.59624005 2.16144718,6.95832016 2.16144718,6.95832016 L0,6.95832016 L0,10.4937993 L2.16144718,10.4937993 L2.16144718,21 L6.60151852,21 L6.60151852,10.4940922 L9.58101254,10.4940922 C9.58101254,10.4940922 9.8600552,8.79885704 9.99531691,6.94528402 C9.60751686,6.94528402 6.61830791,6.94528402 6.61830791,6.94528402 C6.61830791,6.94528402 6.61830791,4.88845464 6.61830791,4.52793458 C6.61830791,4.16663334 7.1024103,3.68063435 7.58088301,3.68063435 C8.05845896,3.68063435 9.06642022,3.68063435 10,3.68063435 C10,3.19927368 10,1.53606735 10,0 C8.75369915,0 7.3358177,0 6.71082393,0 C2.05169339,-0.000244122461 2.16144718,3.53875037 2.16144718,4.06703138 Z" id="path-1"></path>
-          </defs>
-          <g  stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g  transform="translate(-372.000000, -1355.000000)">
-                  <g  transform="translate(164.000000, 1352.000000)">
-                      <g  transform="translate(149.000000, 0.000000)">
-                          <g id="Facebook" transform="translate(59.000000, 3.000000)">
-                              <mask id="mask-2" fill="white">
-                                  <use xlink:href="#path-1"></use>
-                              </mask>
-                              <use id="Mask" fill="#000000" fill-rule="nonzero" xlink:href="#path-1"></use>
-                              <g id="general/fill/gray/007" mask="url(#mask-2)" fill="#272727">
-                                  <g transform="translate(-10.000000, -3.000000)" id="Rectangle">
-                                      <rect x="0" y="0" width="24" height="24"></rect>
-                                  </g>
-                              </g>
-                          </g>
-                      </g>
-                  </g>
-              </g>
-          </g>
-        </svg>
+        <td id="footer" align="center" >
+        <table class="responsive-table" align="center" width="552px" border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #C0C0C0;" >
+          <tr>
+            <td align="center" style="padding:60px 0 36px">
+              <p style="font-size:24px;color:#4A4A4A;line-height: 32px;margin:0 0 12px;">Need Help?</p>
+              <p style="width:360px;font-size: 14px;color:#4A4A4A;line-height: 21px;margin:0 0 0 0;">Our Customer Service team is happy to help with any issues related to your order.<p>
+            </td>
+          </tr>
+          <tr >
+            <td align="center" >
+              <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
+
+
     <tr>
-      <td>
-        <p class="footer_text" width="374px">support@paulevansny.com <br> Paul Evans, 35 Christopher Street, New York, NY 10014, USA<p>
-      </td>
+      <td id="footer" align="center">
+      <table class="responsive-table" align="center" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 36px" >
+        <tr>
+          <td align="center"  style="padding:60px 0 20px">
+            <a style="padding:0 25px 0 0;margin:0 0 0 0" href="https://www.instagram.com/paulevansny/?hl=en" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Instagram.png?230067667115035778"/></a>
+            <a style="padding:0 0 0 0;margin:0 0 0 0" href="https://www.facebook.com/paulevansnyc/" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0217/3274/files/Facebook.png?230067667115035778"/></a>
+          </td>
+        </tr>
+        <tr>
+          <td align="center">
+              <p style="margin: 0 0 0 0"><a style="font-size:14px;color: #4A4A4A;line-height: 21px;" href="mailto:{{shop.email}}">support@paulevansny.com</a></p>
+              <p style="width:400px;font-size:14px;color:#4A4A4A;line-height: 21px;margin:0 0 0 0;text-decoration:none"> Paul Evans, 35 Christopher Street, New York, NY 10014, USA</p>
+          </td>
+        </tr>
+      </table>
+    </td>
     </tr>
+
+
   </table>
-</td>
-</tr>
 
-</table>
-
+  <style type="text/css">
+  /* --------------------------------- BUTTONS --------------------------------- */
 
 
 
-
-
-
-
-
-
-
-<style type="text/css">
-
-/* --------------------------------- FOOTER --------------------------------- */
-
-.footer_title {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  color: #4A4A4A;
-  font-weight: 300;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 32px;
-  margin-bottom: 13px;
-}
-
-
-.footer_text {
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #4A4A4A;
-  font-weight: 400;
-  letter-spacing: 0;
-  text-align: center;
-  line-height: 21px;
-}
-
-.help_sizing {
-  width: 360px;
-}
-
-.footer_button {
+  .header_button {
+  font-size: 12px;
   padding: 15px 20px;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
   display: inline-block;
-  border: 1px solid #ffffff;
-  width: 217px;
-}
-
-.footer_button_text {
-  font-size: 14px;
-  font-family: 'Lato', Helvetica, Arial, sans-serif;
-  color:#ffffff;
+  color: #4A4A4A;
+  background-color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: 700;
-}
+  width:217px;
+  }
+
+  .footer_button {
+  font-size: 12px;
+  padding: 15px 20px;
+  margin-bottom: 48px;
+  display: inline-block;
+  color: #ffffff;
+  background-color: #4A4A4A;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  width:217px;
+
+  }
 
 
   @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 	td {font-family: 'Lato', sans-serif; }
-	a {color: #999999; text-decoration: underline; font-weight: 700;}
+	a {text-decoration:none}
 .item_image img{width: 100%;}
 
     /* CLIENT-SPECIFIC STYLES */
