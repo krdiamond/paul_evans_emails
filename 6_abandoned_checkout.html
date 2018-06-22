@@ -70,7 +70,7 @@
                               <tr>
                                 <td valign="center">
                                   <p style="font-weight: 700; color:#4A4A4A;  margin-bottom:12px;"> {{line.title }}</p>
-                                  <p style="color:#4A4A4A;margin:0px;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
+                                  <p style="color:#4A4A4A;margin:0 0 0 0;">{{ line.quantity }} x {{ line.price | money }}or as low as {{ line.price | divided_by: 12 | money }} /month*</p>
                                 </td>
                               </tr>
                             </table>
@@ -79,27 +79,8 @@
                       </table>
                   </td>
                 </tr>
-                               {% endfor %}
+              {% endfor %}
              </table>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-
-    <!-- VIEW MY CART BUTTON -->
-    <tr>
-      <td id="view_my_cart_button" align="center">
-        <table class="responsive-table" align="center" bgcolor="#ffffff" width="552px"  border="0" cellpadding="0" cellspacing="0" >
-          <tr>
-            <td style="padding-top:36px" align="center">
-              <table width="484px" align="center" style="border-bottom: 1px solid #C0C0C0;" >
-                <tr align="center" style="border-bottom: 1px solid #C0C0C0C0">
-                  <td class="footer_button" bgcolor="#4a4a4a" style="padding: 15px 20px;margin-bottom: 36px;display: inline-block;width: 217px;">
-                    <a style="font-size:14px;color:#ffffff;text-transform:uppercase;text-decoration: none;" href="http://www.paulevansny.com/cart" target="_blank">View my cart</a>
-                  </td>
-                </tr>
-              </table>
             </td>
           </tr>
         </table>
@@ -115,7 +96,7 @@
               <table width="484px" align="center" >
                 <tr >
                   <td align="center" >
-                    <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a>
+                    <a class="footer_button" href="http://www.paulevansny.com/cart" target="_blank">View my cart</a>
                   </td>
                 </tr>
                 <tr>
