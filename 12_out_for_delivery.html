@@ -45,7 +45,7 @@
               </tr>
               <tr>
                 <td align="center" style="color:#ffffff;padding: 0 0 0 0;" class="padding-copy">
-                  <p style="width:450px;">{{ email_body }}</p>
+                  <p style="width:450px;margin:24px 0 12px;">{{ email_body }}</p>
                   {% if fulfillment.estimated_delivery_at %}<p>{{ email_emphasis }}</p>{% endif %}
                 </td>
               </tr>
@@ -78,14 +78,15 @@
           <tr>
             <td style="padding:12px" align="center">
               <table width="484px" align="center" >
+                <tr>
+                  <td style="padding-bottom:12px;font-weight:700;color:#4A4A4A" align="left">Items in Shipment</td>
+                </tr>
                 {% for line in line_items %}
                 <tr>
                   <td style="border-bottom: 1px solid #C0C0C0;">
                   <!-- left COLUMN -->
                   <table cellpadding="0" cellspacing="0" border="0" width="30%" style="width: 30%;" align="left">
-                    <tr>
-                      <td style="padding-bottom:12px;font-weight:700;color:#4A4A4A" align="left">Items in Shipment</td>
-                    </tr>
+
                     <tr>
                      <td style="padding: 0 0 0px 0;">
                         <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -144,7 +145,7 @@
         </tr>
         <tr >
           <td align="center" >
-            <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a>
+            <a class="footer_button" href="{{ shop.url }}/pages/contact" target="_blank">CONTACT US</a>
           </td>
         </tr>
       </table>
@@ -182,7 +183,7 @@
 .header_button {
 font-size: 12px;
 padding: 15px 20px;
-margin-bottom: 48px;
+margin-bottom: 24px;
 display: inline-block;
 color: #4A4A4A;
 background-color: #ffffff;

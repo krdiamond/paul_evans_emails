@@ -16,7 +16,7 @@
         <table  align="center" bgcolor="#4a4a4a" width="552px" height="136px" border="0" cellspacing="0" cellpadding="0">
             <tr >
               <td class="padding-copy" align="center" style="padding-top:48px;padding-bottom:48px;">
-                <p style="font-weight:300;width:484px;font-size:24px;line-height: 32px;color:#ffffff;margin-top:0px;margin-bottom:0px;"> Dear {{ billing_address.first_name }}, {% if fulfillment.line_items.size == line_items.size %}All{% else %}{% if unfulfilled_line_items.size == 0 %}The last{% else %}Some{% endif %}{% endif %} of the items from order {{ name }} have now been shipped: </p>
+                <p style="font-weight:400;width:484px;font-size:24px;line-height: 32px;color:#ffffff;margin-top:0px;margin-bottom:0px;"> Dear {{ billing_address.first_name }}, {% if fulfillment.line_items.size == line_items.size %}All{% else %}{% if unfulfilled_line_items.size == 0 %}The last{% else %}Some{% endif %}{% endif %} of the items from order {{ name }} have now been shipped: </p>
               </td>
             </tr>
         </table>
@@ -153,13 +153,12 @@
                     </tr>
                     <tr >
                       <td align="center" >
-                        <a class="footer_button" href="{{ shop.url }}/account/orders/{{ id }}" target="_blank">EMAIL US</a>
+                        <a class="footer_button" href="{{ shop.url }}/pages/contact" target="_blank">CONTACT US</a>
                       </td>
                     </tr>
                   </table>
                 </td>
               </tr>
-
 
               <tr>
                 <td id="footer" align="center">
